@@ -8,8 +8,16 @@ const options = {
     }
   };
 
-exports.getCards = async () => await axios.request(options).then(function (response) {
-	console.log(response.data);
-}).catch(function (error) {
-	console.error(error);
-});
+export async function Cards() {
+  try {
+  const response = await axios.request(options);
+  console.log(response.data)
+  return response.data;
+  } catch (error) {
+    console.error(error)
+  }
+}
+
+export default {
+  Cards
+};
