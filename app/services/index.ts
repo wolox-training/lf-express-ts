@@ -1,7 +1,7 @@
 import todosService from './todos';
-import getCards from './cards';
+import Cards from './cards';
 
 export default {
   todosService,
-  getCards
+  Cards
 };
