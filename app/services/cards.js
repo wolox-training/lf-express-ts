@@ -8,8 +8,8 @@ const options = {
     }
   };
 
-exports.getCards = () => axios.request(options).then(function (response) {
-	console.log('HOLA',response.data);
+exports.getCards = async () => await axios.request(options).then(function (response) {
+	console.log(response.data);
 }).catch(function (error) {
 	console.error(error);
 });

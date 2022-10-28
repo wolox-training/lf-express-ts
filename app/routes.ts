@@ -2,7 +2,7 @@ import { Application } from 'express';
 
 import { healthCheck } from './controllers/healthCheck';
 import { getUsers, getUserById, createUser } from './controllers/users';
-import { getCards} from './services/cards.js';
+import { getCards } from './services/cards.js';
 import { getTodos } from './controllers/todos';
 
 export const init = (app: Application): void => {
