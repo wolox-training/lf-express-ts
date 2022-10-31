@@ -58,7 +58,7 @@ const config: IConfig = {
   },
   todos: {
     baseURL: process.env.TODOS_API_BASE_URL || 'https://jsonplaceholder.typicode.com'
-  }
+  },
 };
 
 const customConfig: IConfig = deepMerge(config, environmentConfig);

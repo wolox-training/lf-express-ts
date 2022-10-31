@@ -41,7 +41,7 @@
   },
   "include": [
     "./**/*.ts"
-, "app/services/cards.js"  ],
+, "app/services/cards.ts"  ],
   "exclude": [
     "node_modules",
     "dist"
