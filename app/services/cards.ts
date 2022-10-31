@@ -2,8 +2,8 @@ import axios from 'axios';
 import { externalApiError } from '../errors';
 import { Cards, CardsInfo } from '../interfaces/cards';
 
-const BASE_URL = process.env.HEARTHSTONE_API_BASE_URL
-const KEY = process.env.HEARTHSTONE_API_KEY as string
+const BASE_URL = process.env.HEARTHSTONE_API_BASE_URL;
+const KEY = process.env.HEARTHSTONE_API_KEY as string;
 
 const card = axios.create({
   baseURL: BASE_URL,

@@ -40,8 +40,8 @@
     "experimentalDecorators": true
   },
   "include": [
-    "./**/*.ts"
-, "app/services/cards.ts"  ],
+    "./**/*.ts", "app/services/cards.ts"  
+  ],
   "exclude": [
     "node_modules",
     "dist"
