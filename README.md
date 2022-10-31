@@ -48,6 +48,10 @@ DB_PASSWORD="project_name"
 DB_NAME="db_project_name"
 DB_NAME_DEV="db_project_name_dev"
 DB_NAME_TEST="db_project_name_test"
+
+#HearthstoneApi
+HEARTHSTONE_API_BASE_URL = https://omgvamp-hearthstone-v1.p.rapidapi.com
+HEARTHSTONE_API_KEY = 56fbec8327mshc863bda4f0a33dbp192619jsnbc36e96348ef
 ```
 
 ### Migrations
