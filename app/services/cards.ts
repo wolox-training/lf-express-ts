@@ -4,12 +4,13 @@ import { Cards, CardsInfo } from '../interfaces/cards';
 
 const BASE_URL = process.env.HEARTHSTONE_API_BASE_URL;
 const KEY = process.env.HEARTHSTONE_API_KEY as string;
+const HOST = process.env.HEARTHSTONE_API_HOST;
 
 const card = axios.create({
   baseURL: BASE_URL,
   responseType: 'json',
   headers: {
-    'x-rapidapi-host': 'omgvamp-hearthstone-v1.p.rapidapi.com',
+    'x-rapidapi-host': HOST,
     'x-rapidapi-key': KEY
   }
 });
