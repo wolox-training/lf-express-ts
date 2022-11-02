@@ -4,6 +4,7 @@ import { healthCheck } from './controllers/healthCheck';
 import { getUsers, getUserById, createUser } from './controllers/users';
 // import { Cards } from './services/cards.js';
 import { getTodos } from './controllers/todos';
+import { getCardsInfo, getCards } from './controllers/cards';
 
 export const init = (app: Application): void => {
   app.get('/health', healthCheck);
@@ -11,5 +12,6 @@ export const init = (app: Application): void => {
   app.post('/users', createUser);
   app.get('/users/:id', getUserById);
   app.get('/todos', getTodos);
-  // app.get('/cards', Cards);
+  app.get('/cards', getCards);
+  app.get('/info', getCardsInfo);
 };
