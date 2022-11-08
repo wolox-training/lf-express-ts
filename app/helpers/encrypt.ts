@@ -9,5 +9,4 @@ export async function encrypt(data: string): Promise<string> {
   }
 }
 
-
-export default encrypt 
+export default encrypt;

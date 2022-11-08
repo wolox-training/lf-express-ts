@@ -21,7 +21,7 @@ export const createInternalError = (internalCode: string, statusCode: number) =>
   return { message, internalCode, statusCode };
 };
 
-export function errorHandlerMiddleware( 
+export function errorHandlerMiddleware(
   error: InternalError,
   req: Request,
   res: Response,

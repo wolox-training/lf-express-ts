@@ -4,12 +4,7 @@ import { encrypt } from '../helpers/encrypt';
 import logger from '../logger';
 import userService from '../services/users';
 import { User } from '../models/user';
-import {
-  notFoundError,
-  databaseError,
-  alreadyExistError
-} from '../errors';
-
+import { notFoundError, databaseError, alreadyExistError } from '../errors';
 
 export function getUsers(req: Request, res: Response, next: NextFunction): Promise<Response | void> {
   return userService
@@ -19,14 +14,19 @@ export function getUsers(req: Request, res: Response, next: NextFunction): Promi
 }
 
 export async function createUser(req: Request, res: Response, next: NextFunction): Promise<Response | void> {
-  const { name, lastName, password, email } = req.body;
   try {
+    const { name, lastName, password, email } = req.body;
     const existEmail = await userService.findUser({ email });
     if (existEmail) {
       return next(alreadyExistError('Error: email already exist.'));
     }
     const passwordEncrypt: string = await encrypt(password);
-    const newUser = await userService.createAndSave({ name, lastName, password: passwordEncrypt, email } as User);
+    const newUser = await userService.createAndSave({
+      name,
+      lastName,
+      password: passwordEncrypt,
+      email
+    } as User);
     logger.info(`User ${newUser.name} ${newUser.lastName} created`);
     return res.status(HttpStatus.CREATED).send({ newUser });
   } catch (error) {

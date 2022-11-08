@@ -10,6 +10,7 @@ export function userValidator(
   email: string
 ): string | null {
   try {
+    console.log('hola9');
     if (!isAlphabetic(firstName)) {
       return 'the name has to be only contain alphabetic characters';
     }

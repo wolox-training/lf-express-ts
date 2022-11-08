@@ -10,9 +10,9 @@ export async function secure(req: Request, res: Response, next: NextFunction): P
 
   if (auth) {
     const payload: User = SessionManager.decode(auth);
-    console.log('payload', payload)
+    console.log('payload', payload);
     const user: User | undefined = await userService.findUser({ id: payload.id });
-    console.log('user', user)
+    console.log('user', user);
     if (user) {
       req.user = user;
       return next();
