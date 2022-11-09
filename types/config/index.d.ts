@@ -29,6 +29,7 @@ export interface IConfig {
     session: {
       header_name: string; // eslint-disable-line @typescript-eslint/camelcase
       secret: string;
+      saltrounds: int
     };
   };
   todos: {

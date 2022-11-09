@@ -28,7 +28,7 @@ export async function createUser(req: Request, res: Response, next: NextFunction
       email
     } as User);
     logger.info(`User ${newUser.name} ${newUser.lastName} created`);
-    return res.status(HttpStatus.CREATED).send({ newUser });
+    return res.status(HttpStatus.CREATED).send( {user: newUser.name, lastname: newUser.lastName} );
   } catch (error) {
     return next(databaseError(`createUser: Error saving new user ${error}`));
   }

@@ -53,11 +53,12 @@ const config: IConfig = {
     },
     session: {
       header_name: 'authorization',
-      secret: process.env.NODE_API_SESSION_SECRET as string
+      secret: process.env.NODE_API_SESSION_SECRET as string,
+      saltrounds: 10
     }
   },
   todos: {
-    baseURL: process.env.TODOS_API_BASE_URL || 'https://jsonplaceholder.typicode.com'
+    baseURL: process.env.TODOS_API_BASE_URL || 'https://jsonplaceholder.typicode.com',
   }
 };
 
