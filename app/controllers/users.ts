@@ -1,9 +1,10 @@
 import { NextFunction, Request, Response } from 'express';
 import HttpStatus from 'http-status-codes';
-
+import { encrypt } from '../helpers/encrypt';
+import logger from '../logger';
 import userService from '../services/users';
 import { User } from '../models/user';
-import { notFoundError } from '../errors';
+import { notFoundError, databaseError, alreadyExistError } from '../errors';
 
 export function getUsers(req: Request, res: Response, next: NextFunction): Promise<Response | void> {
   return userService
@@ -12,11 +13,25 @@ export function getUsers(req: Request, res: Response, next: NextFunction): Promi
     .catch(next);
 }
 
-export function createUser(req: Request, res: Response, next: NextFunction): Promise<Response | void> {
-  return userService
-    .createAndSave({ name: req.body.username } as User)
-    .then((user: User) => res.status(HttpStatus.CREATED).send({ user }))
-    .catch(next);
+export async function createUser(req: Request, res: Response, next: NextFunction): Promise<Response | void> {
+  try {
+    const { name, lastName, password, email } = req.body;
+    const existEmail = await userService.findUser({ email });
+    if (existEmail) {
+      return next(alreadyExistError('Error: email already exist.'));
+    }
+    const passwordEncrypt: string = await encrypt(password);
+    const newUser = await userService.createAndSave({
+      name,
+      lastName,
+      password: passwordEncrypt,
+      email
+    } as User);
+    logger.info(`User ${newUser.name} ${newUser.lastName} created`);
+    return res.status(HttpStatus.CREATED).send({ newUser });
+  } catch (error) {
+    return next(databaseError(`createUser: Error saving new user ${error}`));
+  }
 }
 
 export function getUserById(req: Request, res: Response, next: NextFunction): Promise<Response | void> {
